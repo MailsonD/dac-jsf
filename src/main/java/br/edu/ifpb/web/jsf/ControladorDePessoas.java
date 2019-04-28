@@ -15,9 +15,7 @@ import javax.inject.Named;
  * @mail ricardo.job@ifpb.edu.br
  * @since 25/04/2019, 10:23:24
  */
-//@RequestScoped
-//@ManagedBean
-//@RequestScoped
+
 @SessionScoped
 @Named
 public class ControladorDePessoas implements Serializable {
