@@ -130,7 +130,16 @@
         </ui:insert>
       </main>
     </div>
+      <h:outputScript name="js/jQuery.js"></h:outputScript>
       <h:outputScript name="js/material.min.js"></h:outputScript>
       <h:outputScript name="js/materialize.min.js"></h:outputScript>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('select').formSelect();
+        });
+        $(document).ready(function() {
+          $('input#input_text, textarea#textarea2').characterCounter();
+        });
+      </script>
   </body>
 </html>

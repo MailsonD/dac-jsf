@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Cadastro</h1>
+            <div class="row center">
+                <h:form>
+                    <div class="row center">
+
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input class="validate" type="text" id="nome" jsf:value="#{controladorDePessoas.pessoa.nome}" />
+                                    <label for="nome">Nome</label>
+                                </div>
+                            </div>
+
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <input class="validate" type="text" id="cpf" jsf:value="#{controladorDePessoas.pessoa.cpf}"
+                                           jsf:converter="convert.cpf"
+                                           jsf:validator="validator.cpf"/>
+                                    <label for="cpf">CPF</label>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="row center">
+                        <div class="col s12 center">
+                            <select>
+                                <option>teste</option>
+                                <option>teste</option>
+                                <option>teste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col s12 center">
+                            <button class="btn-large" jsf:action="#{controladorDePessoas.salvar()}">
+                                <i class="material-icons">send</i>
+                            </button>
+                            <button class="btn-large" jsf:action="#{controladorDePessoas.atualizar()}">
+                                <i class="material-icons">edit</i>
+                            </button>
+
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
