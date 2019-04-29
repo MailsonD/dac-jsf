@@ -22,19 +22,12 @@ public class ControladorDePessoas implements Serializable {
 
     private Pessoa pessoa = new Pessoa();
 
-//    @Inject
     private Pessoas service = new PessoasEmMemoria();
 
-    //actionListeners
-//    public void exemplo(ActionEvent ev) {
-//        
-//    }
     public String salvar() {
         this.service.nova(pessoa);
         this.pessoa = new Pessoa();
-//        return null; //        return "index.xhtml";
-//        return "list";
-        return "list.xhtml?faces-redirect=true";
+        return "pessoas.xhtml?faces-redirect=true";
     }
 
     public String atualizar() {

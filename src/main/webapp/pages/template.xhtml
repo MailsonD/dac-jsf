@@ -51,6 +51,7 @@
 
     <h:outputStylesheet name="css/material.min.css"></h:outputStylesheet>
     <h:outputStylesheet name="css/styleTemplate.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/materialize.min.css"></h:outputStylesheet>
     <style type="text/css">
     #view-source {
       position: fixed;
@@ -112,9 +113,24 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-
+        <ui:insert name="content">
+          <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+              <div class="container">
+                <h1 class="header center teal-text text-lighten-2">Seja bem vindo</h1>
+                <div class="row center">
+                  <h5 class="header col s12 light">Exemplo para a disciplina de desenvolvimento de aplicações corporativas</h5>
+                </div>
+                <div class="row center">
+                  <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Iniciar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ui:insert>
       </main>
     </div>
       <h:outputScript name="js/material.min.js"></h:outputScript>
+      <h:outputScript name="js/materialize.min.js"></h:outputScript>
   </body>
 </html>

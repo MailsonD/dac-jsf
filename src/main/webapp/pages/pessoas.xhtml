@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Lista de Pessoas</h1>
+            <div class="row center">
+                <h:form>
+                    <h:dataTable var="pessoa" value="#{controladorDePessoas.todasAsPessoas}">
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText styleClass="" value="#{pessoa.nome}" ></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">CPF</f:facet>
+                            <h:outputText value="#{pessoa.cpf}" converter="convert.cpf"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">send</i></h:commandLink>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDePessoas.excluir(pessoa)}"><i class="material-icons">close</i></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                <!--<form jsf:id="form" jsf:prependId="false">-->
+                    <!--<ul class="collection with-header">-->
+                        <!--<li class="collection-header"><h4>First Names</h4></li>-->
+                        <!--<ui:repeat value="{controladorDePessoas.todasAsPessoas}" var="pessoa">-->
+
+                            <!--<li class="collection-item">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col s5 center"><h:outputText value="{pessoa.cpf}" converter="convert.cpf"></h:outputText></div>-->
+                                    <!--<div class="col s5 center"><h:outputText value="{pessoa.nome}"></h:outputText></div>-->
+                                    <!--<div class="secondary-content">-->
+                                        <!--<a href="#!"><i class="material-icons">send</i></a>-->
+                                        <!--<a href="#!"><i class="material-icons">close</i></a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+
+                        <!--</ui:repeat>-->
+                    <!--</ul>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+</html>

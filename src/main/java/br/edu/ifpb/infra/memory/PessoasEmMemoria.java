@@ -14,12 +14,11 @@ public class PessoasEmMemoria implements Pessoas {
     private final List<Pessoa> pessoas = new ArrayList<>();
 
     public void nova(Pessoa pessoa) {
-        //TODO: implementar
+        pessoas.add(pessoa);
     }
 
     public List<Pessoa> todas() {
-        //TODO: implementar
-        return null;
+        return pessoas;
     }
 
     public void excluir(Pessoa pessoa) {
@@ -28,6 +27,11 @@ public class PessoasEmMemoria implements Pessoas {
 
     public void atualizar(Pessoa pessoa) {
         //TODO: implementar
+    }
+
+    @Override
+    public Pessoa buscar(CPF cpf) {
+        return null;
     }
 
     @Override
