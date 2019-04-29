@@ -34,11 +34,10 @@
                     </div>
                     <div class="row center">
                         <div class="col s12 center">
-                            <select>
-                                <option>teste</option>
-                                <option>teste</option>
-                                <option>teste</option>
-                            </select>
+                            <h:selectOneMenu value="#{controladorDePessoas.pessoa.dependente}">
+                                <f:selectItems value="#{controladorDeDependentes.listarTodosOsDependentes()}"
+                                               var="dep" itemLabel="#{de.uuid}" />
+                            </h:selectOneMenu>
                         </div>
                     </div>
                     <div class="row center">
@@ -49,7 +48,6 @@
                             <button class="btn-large" jsf:action="#{controladorDePessoas.atualizar()}">
                                 <i class="material-icons">edit</i>
                             </button>
-
                         </div>
                     </div>
                 </h:form>

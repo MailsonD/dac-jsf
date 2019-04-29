@@ -19,8 +19,5 @@ public interface Pessoas extends Serializable {
     void atualizar(Pessoa pessoa);
 
     Pessoa buscar(CPF cpf);
-    
-    List<Dependente> todosOsDepentendes();
 
-    Dependente localizarDependenteComId(String uuid);
 }
