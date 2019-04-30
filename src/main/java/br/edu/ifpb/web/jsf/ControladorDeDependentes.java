@@ -21,6 +21,23 @@ public class ControladorDeDependentes  implements Serializable {
 
     public String salvar(){
         service.salvar(dependente);
+        dependente = new Dependente();
+        return "";
+    }
+
+    public String atualizar(){
+        service.atualizar(dependente);
+        return "";
+    }
+
+    public String editar(Dependente dependente){
+        this.dependente = dependente;
+        return "";
+
+    }
+
+    public String excluir(Dependente dependente){
+        service.excluir(dependente);
         return "";
     }
 

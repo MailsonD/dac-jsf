@@ -12,18 +12,18 @@ public class DependentesEmMemoria implements Dependentes {
 
     @Override
     public void salvar(Dependente dependente) {
-        dependente.setUuid("asduasdhuas");
         dependentes.add(dependente);
     }
 
     @Override
     public void excluir(Dependente dependente) {
-
+        dependentes.remove(dependente);
     }
 
     @Override
     public void atualizar(Dependente dependente) {
-
+        dependentes.remove(dependente);
+        dependentes.add(dependente);
     }
 
     @Override
@@ -33,6 +33,11 @@ public class DependentesEmMemoria implements Dependentes {
 
     @Override
     public Dependente localizarDependenteComId(String uuid) {
+        for (Dependente d:dependentes) {
+            if(d.getUuid().equals(uuid)){
+                return d;
+            }
+        }
         return null;
     }
 }

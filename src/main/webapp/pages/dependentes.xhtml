@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Cadastro de Dependente</h1>
+            <div class="row center">
+                <h:form>
+                    <div class="row center">
+
+                        <div class="col s6">
+                            <div class="input-field">
+                                <h:inputText id="nome" value="#{controladorDeDependentes.dependente.nome}">
+                                    <f:validator validatorId="validator.nome"></f:validator>
+                                </h:inputText>
+                                <label for="nome" >Nome</label>
+                            </div>
+                        </div>
+
+                        <div class="col s6">
+                            <div class="input-field">
+                                <h:inputText id="data" value="#{controladorDeDependentes.dependente.dataDeNascimento}"
+                                             converterMessage="Tipo de data inválida">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" type="localDate"></f:convertDateTime>
+                                    <f:validator validatorId="validator.dataNascimento"></f:validator>
+                                </h:inputText>
+                                <label for="data">Nascimento</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col s12 center">
+                            <button class="btn-large" jsf:action="#{controladorDeDependentes.salvar()}">
+                                <i class="material-icons">send</i>
+                            </button>
+                            <button class="btn-large" jsf:action="#{controladorDeDependentes.atualizar()}">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+            <br/>
+            <br/>
+            <div class="row center">
+                <h:form>
+                    <h:dataTable var="dep" value="#{controladorDeDependentes.listarTodosOsDependentes()}">
+                        <h:column>
+                            <f:facet name="header">UUID</f:facet>
+                            <h:outputText value="#{dep.uuid}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{dep.nome}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Nascimento</f:facet>
+                            <h:outputText value="#{dep.dataDeNascimento}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" type="localDate"></f:convertDateTime>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDeDependentes.editar(dep)}"><i class="material-icons">edit</i></h:commandLink>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDeDependentes.excluir(dep)}"><i class="material-icons">close</i></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

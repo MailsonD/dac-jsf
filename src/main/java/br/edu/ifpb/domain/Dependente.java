@@ -2,6 +2,7 @@ package br.edu.ifpb.domain;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author Ricardo Job
@@ -15,12 +16,19 @@ public class Dependente {
     private LocalDate dataDeNascimento;
 
     public Dependente() {
+        this.uuid = gerarUUID();
     }
 
-    public Dependente(String uuid, String nome, LocalDate dataDeNascimento) {
-        this.uuid = uuid;
+
+
+    public Dependente(String nome, LocalDate dataDeNascimento) {
+        this.uuid = gerarUUID();
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    private String gerarUUID() {
+        return UUID.randomUUID().toString();
     }
 
     public String getUuid() {
@@ -50,16 +58,16 @@ public class Dependente {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Dependente)) return false;
         Dependente that = (Dependente) o;
-        return Objects.equals(uuid, that.uuid) &&
-                Objects.equals(nome, that.nome) &&
-                Objects.equals(dataDeNascimento, that.dataDeNascimento);
+        return Objects.equals(getUuid(), that.getUuid()) &&
+                Objects.equals(getNome(), that.getNome()) &&
+                Objects.equals(getDataDeNascimento(), that.getDataDeNascimento());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, nome, dataDeNascimento);
+        return Objects.hash(getUuid(), getNome(), getDataDeNascimento());
     }
 
     @Override
@@ -70,7 +78,6 @@ public class Dependente {
                 ", dataDeNascimento=" + dataDeNascimento +
                 '}';
     }
-
 }
 
 

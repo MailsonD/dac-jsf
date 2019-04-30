@@ -16,14 +16,14 @@
                     <h:dataTable var="pessoa" value="#{controladorDePessoas.todasAsPessoas}">
                         <h:column>
                             <f:facet name="header">Nome</f:facet>
-                            <h:outputText styleClass="" value="#{pessoa.nome}" ></h:outputText>
+                            <h:outputText value="#{pessoa.nome}" ></h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">CPF</f:facet>
                             <h:outputText value="#{pessoa.cpf}" converter="convert.cpf"></h:outputText>
                         </h:column>
                         <h:column>
-                            <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">send</i></h:commandLink>
+                            <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">edit</i></h:commandLink>
                         </h:column>
                         <h:column>
                             <h:commandLink action="#{controladorDePessoas.excluir(pessoa)}"><i class="material-icons">close</i></h:commandLink>

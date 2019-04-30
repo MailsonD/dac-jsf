@@ -36,7 +36,7 @@
                         <div class="col s12 center">
                             <h:selectOneMenu value="#{controladorDePessoas.pessoa.dependente}">
                                 <f:selectItems value="#{controladorDeDependentes.listarTodosOsDependentes()}"
-                                               var="dep" itemLabel="#{de.uuid}" />
+                                               var="dep" itemLabel="#{dep.uuid}" />
                             </h:selectOneMenu>
                         </div>
                     </div>
@@ -50,6 +50,7 @@
                             </button>
                         </div>
                     </div>
+                    <h:messages></h:messages>
                 </h:form>
             </div>
         </div>

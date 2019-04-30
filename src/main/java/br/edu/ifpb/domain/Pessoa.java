@@ -62,17 +62,17 @@ public class Pessoa {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Pessoa)) return false;
         Pessoa pessoa = (Pessoa) o;
-        return id == pessoa.id &&
-                Objects.equals(nome, pessoa.nome) &&
-                Objects.equals(cpf, pessoa.cpf) &&
-                Objects.equals(dependente, pessoa.dependente);
+        return getId() == pessoa.getId() &&
+                getNome().equals(pessoa.getNome()) &&
+                getCpf().equals(pessoa.getCpf()) &&
+                Objects.equals(getDependente(), pessoa.getDependente());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cpf, dependente);
+        return Objects.hash(getId(), getNome(), getCpf(), getDependente());
     }
 
     @Override
@@ -85,3 +85,4 @@ public class Pessoa {
                 '}';
     }
 }
+

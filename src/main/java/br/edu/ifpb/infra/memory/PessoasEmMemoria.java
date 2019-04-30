@@ -22,15 +22,21 @@ public class PessoasEmMemoria implements Pessoas {
     }
 
     public void excluir(Pessoa pessoa) {
-        //TODO: implementar
+        pessoas.remove(pessoa);
     }
 
     public void atualizar(Pessoa pessoa) {
-        //TODO: implementar
+        pessoas.remove(pessoa);
+        pessoas.add(pessoa);
     }
 
     @Override
     public Pessoa buscar(CPF cpf) {
+        for (Pessoa p:pessoas) {
+            if(p.getCpf().valor().equals(cpf.valor())){
+                return p;
+            }
+        }
         return null;
     }
 
