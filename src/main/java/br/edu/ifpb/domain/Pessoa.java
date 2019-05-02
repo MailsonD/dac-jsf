@@ -9,7 +9,6 @@ import java.util.Objects;
  */
 public class Pessoa {
 
-    private int id;
     private String nome;
     private CPF cpf;
     private Dependente dependente;
@@ -51,35 +50,25 @@ public class Pessoa {
         this.dependente = dependente;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Pessoa)) return false;
         Pessoa pessoa = (Pessoa) o;
-        return getId() == pessoa.getId() &&
-                getNome().equals(pessoa.getNome()) &&
-                getCpf().equals(pessoa.getCpf()) &&
+        return Objects.equals(getNome(), pessoa.getNome()) &&
+                Objects.equals(getCpf(), pessoa.getCpf()) &&
                 Objects.equals(getDependente(), pessoa.getDependente());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getCpf(), getDependente());
+        return Objects.hash(getNome(), getCpf(), getDependente());
     }
 
     @Override
     public String toString() {
         return "Pessoa{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", cpf=" + cpf +
                 ", dependente=" + dependente +
                 '}';

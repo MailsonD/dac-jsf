@@ -1,4 +1,4 @@
-package br.edu.ifpb.infra.jsf;
+package br.edu.ifpb.infra.jsf.Validator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

@@ -1,4 +1,4 @@
-package br.edu.ifpb.infra.jsf;
+package br.edu.ifpb.infra.jsf.Converter;
 
 import br.edu.ifpb.domain.CPF;
 import javax.faces.component.UIComponent;

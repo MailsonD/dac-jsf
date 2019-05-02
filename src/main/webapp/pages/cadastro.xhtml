@@ -34,7 +34,7 @@
                     </div>
                     <div class="row center">
                         <div class="col s12 center">
-                            <h:selectOneMenu value="#{controladorDePessoas.pessoa.dependente}">
+                            <h:selectOneMenu value="#{controladorDePessoas.pessoa.dependente}" converter="convert.dependente">
                                 <f:selectItems value="#{controladorDeDependentes.listarTodosOsDependentes()}"
                                                var="dep" itemLabel="#{dep.uuid}" />
                             </h:selectOneMenu>

@@ -1,4 +1,6 @@
-package br.edu.ifpb.domain;
+package br.edu.ifpb.infra.interfaces;
+
+import br.edu.ifpb.domain.Dependente;
 
 import java.util.List;
 

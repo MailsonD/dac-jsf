@@ -1,7 +1,7 @@
 package br.edu.ifpb.web.jsf;
 
 import br.edu.ifpb.domain.Pessoa;
-import br.edu.ifpb.domain.Pessoas;
+import br.edu.ifpb.infra.interfaces.Pessoas;
 import br.edu.ifpb.infra.memory.PessoasEmMemoria;
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ControladorDePessoas implements Serializable {
 
     private Pessoa pessoa = new Pessoa();
 
-    private Pessoas service = new PessoasEmMemoria();
+    private Pessoas service = PessoasEmMemoria.getInstance();
 
     public String salvar() {
         this.service.nova(pessoa);

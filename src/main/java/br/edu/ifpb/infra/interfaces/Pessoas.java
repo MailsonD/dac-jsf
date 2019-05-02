@@ -1,4 +1,7 @@
-package br.edu.ifpb.domain;
+package br.edu.ifpb.infra.interfaces;
+
+import br.edu.ifpb.domain.CPF;
+import br.edu.ifpb.domain.Pessoa;
 
 import java.io.Serializable;
 import java.util.List;

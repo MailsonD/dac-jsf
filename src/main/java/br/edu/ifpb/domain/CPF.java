@@ -1,5 +1,7 @@
 package br.edu.ifpb.domain;
 
+import java.util.Objects;
+
 /**
  * @author Ricardo Job
  * @mail ricardo.job@ifpb.edu.br
@@ -36,4 +38,16 @@ public class CPF {
         this.numero = "";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CPF)) return false;
+        CPF cpf = (CPF) o;
+        return Objects.equals(numero, cpf.numero);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
+    }
 }

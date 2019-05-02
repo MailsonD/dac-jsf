@@ -23,6 +23,10 @@
                             <h:outputText value="#{pessoa.cpf}" converter="convert.cpf"></h:outputText>
                         </h:column>
                         <h:column>
+                            <f:facet name="header">Dependente</f:facet>
+                            <h:outputText value="#{pessoa.dependente.nome}" ></h:outputText>
+                        </h:column>
+                        <h:column>
                             <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">edit</i></h:commandLink>
                         </h:column>
                         <h:column>
