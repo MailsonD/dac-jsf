@@ -2,11 +2,6 @@ package br.edu.ifpb.domain;
 
 import java.util.Objects;
 
-/**
- * @author Ricardo Job
- * @mail ricardo.job@ifpb.edu.br
- * @since 25/04/2019, 09:55:19
- */
 public class Pessoa {
 
     private String nome;
@@ -16,13 +11,13 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String nome,String cpf,Dependente dependente) {
-        this(nome,new CPF(cpf),dependente);
+    public Pessoa(String nome, String cpf, Dependente dependente){
+        this(nome, new CPF(cpf), dependente);
     }
 
-    public Pessoa(String nome,CPF cpf,Dependente dependente) {
-        this.cpf = cpf;
+    public Pessoa(String nome, CPF cpf, Dependente dependente){
         this.nome = nome;
+        this.cpf = cpf;
         this.dependente = dependente;
     }
 
@@ -53,16 +48,16 @@ public class Pessoa {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pessoa)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(getNome(), pessoa.getNome()) &&
-                Objects.equals(getCpf(), pessoa.getCpf()) &&
-                Objects.equals(getDependente(), pessoa.getDependente());
+        return Objects.equals(nome, pessoa.nome) &&
+                Objects.equals(cpf, pessoa.cpf) &&
+                Objects.equals(dependente, pessoa.dependente);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNome(), getCpf(), getDependente());
+        return Objects.hash(nome, cpf, dependente);
     }
 
     @Override

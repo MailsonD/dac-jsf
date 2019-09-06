@@ -4,11 +4,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
-/**
- * @author Ricardo Job
- * @mail ricardo.job@ifpb.edu.br
- * @since 26/04/2019, 18:38:44
- */
 public class Dependente {
 
     private String uuid;
@@ -16,13 +11,12 @@ public class Dependente {
     private LocalDate dataDeNascimento;
 
     public Dependente() {
-        this.uuid = gerarUUID();
+
     }
 
 
-
-    public Dependente(String nome, LocalDate dataDeNascimento) {
-        this.uuid = gerarUUID();
+    public Dependente(String uuid, String nome, LocalDate dataDeNascimento) {
+        this.uuid = uuid;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
     }

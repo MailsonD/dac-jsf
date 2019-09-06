@@ -2,14 +2,8 @@ package br.edu.ifpb.domain;
 
 import java.util.Objects;
 
-/**
- * @author Ricardo Job
- * @mail ricardo.job@ifpb.edu.br
- * @since 26/04/2019, 08:25:16
- */
 public class CPF {
 
-    //12312312312
     private final String numero;
 
     public CPF(String numero) {
