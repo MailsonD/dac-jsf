@@ -46,7 +46,11 @@ public class PessoasEmJDBC implements Pessoas {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, pessoa.getCpf().valor());
             ps.setString(2, pessoa.getNome());
-            ps.setString(3, pessoa.getDependente().getUuid());
+            if(pessoa.getDependente() != null) {
+                ps.setString(3, pessoa.getDependente().getUuid());
+            }else{
+                ps.setString(3, null);
+            }
             ps.execute();
         } catch (SQLException e) {
             log.log(Level.SEVERE, "Deu erro ao salvar");

@@ -8,6 +8,7 @@ import java.util.List;
 //import javax.faces.bean.RequestScoped;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -22,7 +23,8 @@ public class ControladorDePessoas implements Serializable {
 
     private Pessoa pessoa = new Pessoa();
 
-    private Pessoas service = PessoasEmMemoria.getInstance();
+    @Inject
+    private Pessoas service;
 
     public String salvar() {
         this.service.nova(pessoa);
