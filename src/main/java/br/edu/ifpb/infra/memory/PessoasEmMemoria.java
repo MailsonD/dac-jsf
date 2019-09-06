@@ -6,11 +6,7 @@ import br.edu.ifpb.infra.interfaces.Pessoas;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Ricardo Job
- * @mail ricardo.job@ifpb.edu.br
- * @since 25/04/2019, 09:57:57
- */
+
 public class PessoasEmMemoria implements Pessoas {
 
     private final List<Pessoa> pessoas = new ArrayList<>();
@@ -50,6 +46,11 @@ public class PessoasEmMemoria implements Pessoas {
     @Override
     public Pessoa buscar(CPF cpf) {
         return pessoas.stream().filter(pessoa -> pessoa.getCpf().equals(cpf)).findFirst().get();
+    }
+
+    @Override
+    public List<Pessoa> buscar(String cpf) {
+        return null;
     }
 
 

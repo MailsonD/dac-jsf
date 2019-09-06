@@ -1,35 +1,39 @@
 package br.edu.ifpb.web.jsf;
 
+import br.edu.ifpb.domain.CPF;
 import br.edu.ifpb.domain.Pessoa;
 import br.edu.ifpb.infra.interfaces.Pessoas;
-import br.edu.ifpb.infra.memory.PessoasEmMemoria;
-import java.io.Serializable;
-import java.util.List;
-//import javax.faces.bean.RequestScoped;
 
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
 
-/**
- * @author Ricardo Job
- * @mail ricardo.job@ifpb.edu.br
- * @since 25/04/2019, 10:23:24
- */
 
-@SessionScoped
+@ViewScoped
 @Named
 public class ControladorDePessoas implements Serializable {
 
     private Pessoa pessoa = new Pessoa();
+    private List<Pessoa> todasAsPessoas;
+    private String cpf;
+    private List<Pessoa> buscadas;
 
     @Inject
     private Pessoas service;
 
+    @PostConstruct
+    private void init(){
+        todasAsPessoas = service.todas();
+        buscadas = todasAsPessoas;
+    }
+
     public String salvar() {
         this.service.nova(pessoa);
         this.pessoa = new Pessoa();
-        return "pessoas.xhtml?faces-redirect=true";
+        return null;
     }
 
     public String atualizar() {
@@ -48,8 +52,17 @@ public class ControladorDePessoas implements Serializable {
         return null;
     }
 
+    public String buscar(){
+        this.buscadas = service.buscar(cpf);
+        return null;
+    }
+
     public List<Pessoa> getTodasAsPessoas() {
-        return this.service.todas();
+        return todasAsPessoas;
+    }
+
+    public void setTodasAsPessoas(List<Pessoa> todasAsPessoas) {
+        this.todasAsPessoas = todasAsPessoas;
     }
 
     public Pessoa getPessoa() {
@@ -60,4 +73,19 @@ public class ControladorDePessoas implements Serializable {
         this.pessoa = pessoa;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public List<Pessoa> getBuscadas() {
+        return buscadas;
+    }
+
+    public void setBuscadas(List<Pessoa> buscadas) {
+        this.buscadas = buscadas;
+    }
 }

@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-<ui:composition template="template.xhtml">
+<ui:composition template="../template/template.xhtml">
     <ui:define name="content">
         <div class="container">
             <h1 class="header center teal-text text-lighten-2">Cadastro</h1>
@@ -35,7 +35,7 @@
                     <div class="row center">
                         <div class="col s12 center">
                             <h:selectOneMenu value="#{controladorDePessoas.pessoa.dependente}" converter="convert.dependente">
-                                <f:selectItems value="#{controladorDeDependentes.listarTodosOsDependentes()}"
+                                <f:selectItems value="#{controladorDeDependentes.todosOsDependentes}"
                                                var="dep" itemLabel="#{dep.uuid}" />
                             </h:selectOneMenu>
                         </div>
@@ -51,6 +51,33 @@
                         </div>
                     </div>
                     <h:messages></h:messages>
+                </h:form>
+            </div>
+        </div>
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Lista de Pessoas</h1>
+            <div class="row center">
+                <h:form>
+                    <h:dataTable var="pessoa" value="#{controladorDePessoas.todasAsPessoas}">
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{pessoa.nome}" ></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">CPF</f:facet>
+                            <h:outputText value="#{pessoa.cpf}" converter="convert.cpf"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Dependente</f:facet>
+                            <h:outputText value="#{pessoa.dependente.nome}" ></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">edit</i></h:commandLink>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink action="#{controladorDePessoas.excluir(pessoa)}"><i class="material-icons">close</i></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
                 </h:form>
             </div>
         </div>

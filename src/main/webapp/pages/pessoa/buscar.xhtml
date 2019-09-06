@@ -7,13 +7,38 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-<ui:composition template="template.xhtml">
+<ui:composition template="../template/template.xhtml">
     <ui:define name="content">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2">Cadastro</h1>
+            <div class="row center">
+                <h:form>
+                    <div class="row center">
+
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input class="validate" type="text" id="nome" jsf:value="#{controladorDePessoas.cpf}" />
+                                <label for="nome">Buscar por CPF</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row center">
+                        <div class="col s12 center">
+                            <button class="btn-large" jsf:action="#{controladorDePessoas.buscar()}">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </div>
         <div class="container">
             <h1 class="header center teal-text text-lighten-2">Lista de Pessoas</h1>
             <div class="row center">
                 <h:form>
-                    <h:dataTable var="pessoa" value="#{controladorDePessoas.todasAsPessoas}">
+                    <h:dataTable var="pessoa" value="#{controladorDePessoas.buscadas}">
                         <h:column>
                             <f:facet name="header">Nome</f:facet>
                             <h:outputText value="#{pessoa.nome}" ></h:outputText>
@@ -26,17 +51,10 @@
                             <f:facet name="header">Dependente</f:facet>
                             <h:outputText value="#{pessoa.dependente.nome}" ></h:outputText>
                         </h:column>
-                        <h:column>
-                            <h:commandLink action="#{controladorDePessoas.editar(pessoa)}"><i class="material-icons">edit</i></h:commandLink>
-                        </h:column>
-                        <h:column>
-                            <h:commandLink action="#{controladorDePessoas.excluir(pessoa)}"><i class="material-icons">close</i></h:commandLink>
-                        </h:column>
                     </h:dataTable>
                 </h:form>
             </div>
         </div>
     </ui:define>
 </ui:composition>
-
 </html>

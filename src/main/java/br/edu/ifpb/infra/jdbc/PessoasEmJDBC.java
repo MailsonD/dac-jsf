@@ -68,12 +68,11 @@ public class PessoasEmJDBC implements Pessoas {
             while (resultSet.next()){
                 pessoas.add(construirPessoa(resultSet));
             }
-            return pessoas;
         } catch (SQLException e) {
             log.log(Level.SEVERE, "Deu erro ao listar");
             e.printStackTrace();
         }
-        return null;
+        return pessoas;
     }
 
     @Override
@@ -115,9 +114,28 @@ public class PessoasEmJDBC implements Pessoas {
                 return construirPessoa(resultSet);
             }
         } catch (SQLException e) {
+            log.log(Level.SEVERE, "Deu erro ao buscar");
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public List<Pessoa> buscar(String cpf) {
+        String sql = "SELECT * FROM pessoa WHERE cpf LIKE ?";
+        List<Pessoa> pessoas = new ArrayList<>();
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, "%"+cpf+"%");
+            ResultSet resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                pessoas.add(construirPessoa(resultSet));
+            }
+        } catch (SQLException e) {
+            log.log(Level.SEVERE, "Deu erro ao buscar com regex");
+            e.printStackTrace();
+        }
+        return pessoas;
     }
 
     private Pessoa construirPessoa(ResultSet resultSet) throws SQLException {

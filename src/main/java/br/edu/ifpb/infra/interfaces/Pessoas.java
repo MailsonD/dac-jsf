@@ -23,4 +23,6 @@ public interface Pessoas extends Serializable {
 
     Pessoa buscar(CPF cpf);
 
+    List<Pessoa> buscar(String cpf);
+
 }

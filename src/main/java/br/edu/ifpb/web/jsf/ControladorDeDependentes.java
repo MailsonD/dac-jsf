@@ -3,22 +3,28 @@ package br.edu.ifpb.web.jsf;
 import br.edu.ifpb.domain.Dependente;
 import br.edu.ifpb.infra.interfaces.Dependentes;
 
-import br.edu.ifpb.infra.memory.DependentesEmMemoria;
-
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@SessionScoped
+@ViewScoped
 @Named
 public class ControladorDeDependentes  implements Serializable {
 
     private Dependente dependente = new Dependente();
+    private List<Dependente> todosOsDependentes;
 
     @Inject
     private Dependentes service;
+
+    @PostConstruct
+    private void init(){
+        todosOsDependentes = service.todosOsDepentendes();
+    }
 
     public String salvar(){
         service.salvar(dependente);
@@ -42,8 +48,13 @@ public class ControladorDeDependentes  implements Serializable {
         return "";
     }
 
-    public List<Dependente> listarTodosOsDependentes(){
-        return service.todosOsDepentendes();
+    public List<Dependente> getTodosOsDependentes() {
+        System.out.println("Tá pegando");
+        return todosOsDependentes;
+    }
+
+    public void setTodosOsDependentes(List<Dependente> todosOsDependentes) {
+        this.todosOsDependentes = todosOsDependentes;
     }
 
     public Dependente getDependente() {
