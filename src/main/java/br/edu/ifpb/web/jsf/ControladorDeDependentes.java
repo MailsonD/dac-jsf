@@ -34,7 +34,7 @@ public class ControladorDeDependentes  implements Serializable {
     }
 
     private void atualizarLista() {
-
+        this.todosOsDependentes = service.todosOsDepentendes();
     }
 
     public String atualizar(){

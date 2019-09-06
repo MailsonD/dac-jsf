@@ -94,7 +94,11 @@ public class PessoasEmJDBC implements Pessoas {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, pessoa.getNome());
-            ps.setString(2, pessoa.getDependente().getUuid());
+            if(pessoa.getDependente() != null){
+                ps.setString(2, pessoa.getDependente().getUuid());
+            }else{
+                ps.setString(2,null);
+            }
             ps.setString(3, pessoa.getCpf().valor());
             ps.executeUpdate();
         } catch (SQLException e) {
