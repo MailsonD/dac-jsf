@@ -14,15 +14,14 @@ public class Dependente {
 
     }
 
-
     public Dependente(String uuid, String nome, LocalDate dataDeNascimento) {
+        this(nome, dataDeNascimento);
         this.uuid = uuid;
-        this.nome = nome;
-        this.dataDeNascimento = dataDeNascimento;
     }
 
-    private String gerarUUID() {
-        return UUID.randomUUID().toString();
+    public Dependente(String nome, LocalDate dataDeNascimento) {
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
     }
 
     public String getUuid() {
