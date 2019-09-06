@@ -33,22 +33,30 @@ public class ControladorDePessoas implements Serializable {
     public String salvar() {
         this.service.nova(pessoa);
         this.pessoa = new Pessoa();
+        atualizaLista();
         return null;
+    }
+
+    private void atualizaLista() {
+        todasAsPessoas = service.todas();
     }
 
     public String atualizar() {
         this.service.atualizar(pessoa);
         this.pessoa = new Pessoa();
+        atualizaLista();
         return null;
     }
 
     public String excluir(Pessoa pessoa) {
         this.service.excluir(pessoa);
+        atualizaLista();
         return null;
     }
 
     public String editar(Pessoa pessoa) {
         this.pessoa = pessoa;
+        atualizaLista();
         return null;
     }
 

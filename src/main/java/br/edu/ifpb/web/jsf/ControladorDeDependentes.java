@@ -23,17 +23,23 @@ public class ControladorDeDependentes  implements Serializable {
 
     @PostConstruct
     private void init(){
-        todosOsDependentes = service.todosOsDepentendes();
+        atualizarLista();
     }
 
     public String salvar(){
         service.salvar(dependente);
         dependente = new Dependente();
+        atualizarLista();
         return "";
+    }
+
+    private void atualizarLista() {
+
     }
 
     public String atualizar(){
         service.atualizar(dependente);
+        atualizarLista();
         return "";
     }
 
@@ -45,11 +51,11 @@ public class ControladorDeDependentes  implements Serializable {
 
     public String excluir(Dependente dependente){
         service.excluir(dependente);
+        atualizarLista();
         return "";
     }
 
     public List<Dependente> getTodosOsDependentes() {
-        System.out.println("Tá pegando");
         return todosOsDependentes;
     }
 
